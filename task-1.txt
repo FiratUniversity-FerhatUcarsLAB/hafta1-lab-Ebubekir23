@@ -1,4 +1,67 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541051
+AD-SOYAD: Ebubekir Yılmaz
+ALGORITMA YüksekSkorStratejisi
+
+DEĞİŞKENLER:
+    skor ← 0
+    can ← 3
+    enYüksekSkor ← 0
+    oyunDurumu ← "devam"
+
+BAŞLA
+
+    OYUNU_BAŞLAT()
+
+    WHILE (can > 0) AND (oyunDurumu = "devam") DO
+        
+        durum ← OYUN_DURUMUNU_AL()
+
+        // Durum analizi
+        IF durum = "bonus_görüş_alani_icinde" THEN
+            HAREKET_ET("bonusa")
+            skor ← skor + 10
+
+        ELSE IF durum = "dusman_yakin" THEN
+            IF SAVUNMA_GÜCÜ_YETERLİ() THEN
+                SALDIR()
+                skor ← skor + 20
+            ELSE
+                KAÇ()
+                can ← can - 1
+            ENDIF
+
+        ELSE IF durum = "engel_var" THEN
+            ZIPLAMA_VEYA_KAÇIN()
+        
+        ELSE
+            // Düşman yok, bonus yoksa skor artırıcı küçük görev yap
+            GÖREV_YAP()
+            skor ← skor + 5
+        ENDIF
+
+        // Her turun sonunda kontrol
+        IF CAN_KAYBI_OLDU() THEN
+            can ← can - 1
+        ENDIF
+
+        // Oyunun bitip bitmediğini kontrol et
+        IF OYUN_BITTI_MI() THEN
+            oyunDurumu ← "bitti"
+        ENDIF
+
+        SKORU_GÜNCELLE(skor)
+    ENDWHILE
+
+    // Oyun bittiğinde yüksek skoru karşılaştır
+    IF skor > enYüksekSkor THEN
+        enYüksekSkor ← skor
+        YENI_YUKSEK_SKORU_KAYDET(enYüksekSkor)
+    ENDIF
+
+    SONUÇ_GÖSTER(enYüksekSkor, skor)
+
+BİTİR
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Bu çalışma, bir oyunda yüksek skor elde etmeyi amaçlayan genel bir pseudocode algoritmasını içerir.
+Koşullu ifadeler (if-else) ve döngü yapıları (while) kullanılarak, oyuncunun karar verme süreci adım adım modellenmiştir.
