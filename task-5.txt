@@ -1,4 +1,55 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541051
+AD-SOYAD: Ebubekir Yılmaz
+BAŞLA
+
+// Başlangıç değerleri
+günlük_sosyal_medya_limiti ← 90 dakika
+günlük_sosyal_medya_süresi ← 0
+alternatif_aktiviteler ← ["kitap oku", "yürüyüş yap", "yeni bir şey öğren", "günlük yaz"]
+öncelikli_sosyal_medya_kullanımı ← ["arkadaşlarla iletişim", "bilgi edinme", "içerik üretme"]
+
+WHILE gün_devam_ediyor DO
+    // Kullanıcı boş vakitte sosyal medyaya yönelmek istiyor mu?
+    IF kullanıcı_bos_vakit = TRUE THEN
+        // Sosyal medya limitine bak
+        IF günlük_sosyal_medya_süresi < günlük_sosyal_medya_limiti THEN
+            PRINT "Sosyal medyayı neden açmak istiyorsun?"
+            KULLANICI_CEVAP ← al()
+
+            // Cevap faydalı bir kategoriye giriyor mu?
+            IF KULLANICI_CEVAP ∈ öncelikli_sosyal_medya_kullanımı THEN
+                PRINT "Sosyal medyayı verimli amaçla kullanabilirsin."
+                sosyal_medya_kullan()
+                günlük_sosyal_medya_süresi ← günlük_sosyal_medya_süresi + kullanılan_süre
+            ELSE
+                PRINT "Bu amaç verimli değil. Alternatif bir aktivite seç."
+                rastgele_aktivite ← seç(alternatif_aktiviteler)
+                uygula(rastgele_aktivite)
+            ENDIF
+        ELSE
+            PRINT "Günlük sosyal medya limitini doldurdun."
+            rastgele_aktivite ← seç(alternatif_aktiviteler)
+            uygula(rastgele_aktivite)
+        ENDIF
+    ENDIF
+
+    // Kullanıcı sosyal medyayı kullanıyorsa ara ver kontrolü
+    IF kullanıcı_sosyal_medyada = TRUE THEN
+        her 20 dakikada bir:
+            PRINT "Kısa bir mola ver. Gözlerini dinlendir."
+            mola_ver()
+    ENDIF
+ENDWHILE
+
+GÜN_BİTTİĞİNDE:
+    PRINT "Bugün toplam sosyal medya süren: ", günlük_sosyal_medya_süresi, " dakika."
+    IF günlük_sosyal_medya_süresi <= günlük_sosyal_medya_limiti THEN
+        PRINT "Tebrikler, hedefe ulaştın!"
+    ELSE
+        PRINT "Yarını daha kontrollü geçirmeyi dene."
+    ENDIF
+
+BİTİR
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Bu proje, sosyal medyada geçirilen süreyi azaltmak için geliştirilen bir algoritmanın pseudocode’udur. Algoritma, günlük kullanım limitlerini kontrol eder, alternatif aktiviteler önerir ve sosyal medyayı daha verimli kullanmayı amaçlar.
