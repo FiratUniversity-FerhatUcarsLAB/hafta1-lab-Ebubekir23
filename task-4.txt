@@ -1,4 +1,38 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541051
+AD-SOYAD: Ebubekir Yılmaz
+Algorithm PastaPaylasimi(N, toplamDilim):
+
+    # Edge Case 1: Kişi yoksa
+    IF N == 0 THEN
+        PRINT "Paylaşım yapılamaz (0 kişi var)."
+        RETURN
+    
+    # Edge Case 2: Tek kişi varsa
+    IF N == 1 THEN
+        PRINT "Tüm pasta tek kişiye verildi: " + toplamDilim + " dilim"
+        RETURN
+
+    # 1. Ana Hesaplama: Eşit pay
+    esitPay = toplamDilim DIV N      # Taban bölme (ör. 10 // 3 = 3)
+    kalan = toplamDilim MOD N        # Kalan dilimler (ör. 10 % 3 = 1)
+
+    PRINT "Her kişi en az " + esitPay + " dilim alacak."
+    PRINT "Kalan dilim sayısı: " + kalan
+
+    # 2. Kalan dilimleri dağıt
+    FOR i FROM 1 TO N DO
+        kisiPayi = esitPay
+        
+        IF kalan > 0 THEN
+            kisiPayi = kisiPayi + 1
+            kalan = kalan - 1
+        ENDIF
+
+        PRINT "Kişi " + i + " toplam " + kisiPayi + " dilim aldı."
+    END FOR
+END Algorithm
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Bu projede N kişi için pasta paylaşımı problemi algoritmik olarak çözülmüştür. 
+Pseudocode içerisinde if-else koşulları, döngüler, edge case’ler ve “böl ve fethet” 
+(divide & conquer) yaklaşımı kullanılmıştır.
