@@ -1,4 +1,31 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541051
+AD-SOYAD: Ebubekir Yılmaz
+ALGORİTMA KitapAramaSistemi
+
+Girdi: kitapListesi[], aramaKriteri, aramaDegeri
+Çıktı: bulunanKitap veya "Kitap bulunamadı"
+
+1. BAŞLA
+2. // Önce kitap listesini sıralayalım (örneğin kitap adıyla)
+3. kitapListesi = MergeSort(kitapListesi, kriter = "kitapAdi")
+
+4. // Kullanıcı arama kriteri seçer
+5. EĞER aramaKriteri == "ISBN" İSE
+       aramaSonucu = BinarySearch(kitapListesi, aramaDegeri, kriter="ISBN")
+   DEĞİLSE EĞER aramaKriteri == "kitapAdi" İSE
+       aramaSonucu = BinarySearch(kitapListesi, aramaDegeri, kriter="kitapAdi")
+   DEĞİLSE EĞER aramaKriteri == "yazarAdi" İSE
+       aramaSonucu = LinearSearch(kitapListesi, aramaDegeri, kriter="yazarAdi")
+   DEĞİLSE
+       aramaSonucu = LinearSearch(kitapListesi, aramaDegeri, kriter="tur")
+
+6. // Sonuçları kontrol et
+7. EĞER aramaSonucu BOŞ DEĞİLSE
+       YAZ "Kitap bulundu: " + aramaSonucu
+   DEĞİLSE
+       YAZ "Kitap bulunamadı."
+
+8. BİTİR
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Bu çalışma kütüphanede kitap arama sistemi için geliştirilmiş pseudocode içerir.
