@@ -1,4 +1,62 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541051
+AD-SOYAD: Ebubekir Yılmaz
+### Başlangıç
+
+1. BAŞLAT
+
+2. Oyuncunun_Elini ve Rakibin_Elini al
+   (örnek: Oyuncunun_El = [3, 5, 7, 9], Rakibin_El = [2, 6, 8, 10])
+
+3. Oyuncu_Puan = 0
+   Rakip_Puan = 0
+
+4. HER TUR için (i = 1'dan Oyun_Uzunluğu'na kadar TEKRAR ET):
+   
+   5. Rakibin_Olası_Hamlelerini_Tahmin_Et()
+      - Eğer rakibin yüksek kartları azaldıysa, düşük kart oynama olasılığı artar.
+      - Eğer senin önceki turda güçlü kart oynadığını gördüyse, orta değerli kartla “dengeleme” stratejisi izleyebilir.
+
+   6. RİSK_DEĞERLENDİR()
+      - Eğer kalan kart sayısı azsa ve geri dönüş zorlaşmışsa → daha agresif oyna.
+      - Eğer önde isen → güvenli oyna, yüksek kartlarını sakla.
+
+   7. STRATEJİ_BELİRLE()
+      - Eğer Rakibin yüksek kart oynama olasılığı YÜKSEK ise:
+            Seçilen_Kart = en düşük kart (kaybı minimize et)
+      - Eğer Rakibin düşük kart oynama olasılığı YÜKSEK ise:
+            Seçilen_Kart = en yüksek kart (puanı maksimize et)
+      - Aksi halde:
+            Seçilen_Kart = orta değerli kart (denge stratejisi)
+
+   8. Rakip_Kart = Tahmini veya Gerçek_Rakip_Kart
+      (simülasyon veya veri girişi olabilir)
+
+   9. **Karşılaştırma:**
+      IF Seçilen_Kart > Rakip_Kart THEN
+            Oyuncu_Puan = Oyuncu_Puan + 1
+      ELSE IF Seçilen_Kart < Rakip_Kart THEN
+            Rakip_Puan = Rakip_Puan + 1
+      ELSE
+            (Beraberlik) → her iki oyuncuya 0.5 puan ver
+
+   10. Seçilen_Kart ve Rakip_Kart'ı ellerden çıkar
+
+11. TUR SONU → Kalan kartlara göre stratejiyi güncelle:
+      - Eğer rakibin elindeki maksimum kart < senin minimum kartın ise → garanti kazanma stratejisine geç.
+      - Eğer senin elindeki maksimum kart < rakibin ortalama kartı ise → savunmaya geç.
+
+12. DÖNGÜ SONU
+
+13. KAZANANI BELİRLE:
+      IF Oyuncu_Puan > Rakip_Puan THEN
+           "Oyuncu kazandı!"
+      ELSE IF Oyuncu_Puan < Rakip_Puan THEN
+           "Rakip kazandı!"
+      ELSE
+           "Berabere!"
+
+14. BİTİR
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Bu proje, basit bir kart oyunu için strateji geliştirme algoritmasını içerir.
+Oyuncunun karar verme süreci, risk analizi, rakip hamle tahmini ve optimal strateji seçimi adım adım açıklanmıştır.
